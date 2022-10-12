@@ -18,4 +18,3 @@ The safe goal for our project is to create a program that will play different so
 - Create an interface that shows a piano with its keymap 
 - Get the keys pressed input to play music like its a piano 
 - Find way to save the inputted keys into a file and/or list for future use
-
