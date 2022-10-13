@@ -75,10 +75,7 @@ class Play:
         :param songToAdd:
         :return:
         """
-        if self.getQueue() is not None: # I might not need this if statement, do testing with appending to a None list
-            self.queue.append(songToAdd)
-        else:
-            self.queue = [songToAdd]
+        self.queue.append(songToAdd)
 
     def skipCurrent(self):
         """
