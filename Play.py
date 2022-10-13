@@ -9,12 +9,12 @@ class Play:
     def shuffle(self):
         return
 
-    def play_specific(self):
+    def playSpecific(self):
         return
 
-    def pause_music(self):
+    def pauseMusic(self):
         return
 
-    def stop_music(self):
+    def stopMusic(self):
         return
 
