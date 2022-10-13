@@ -1,8 +1,7 @@
-print("hi")
+class Main:
+    def __init__(self):
+        pass
 
-print("no")
+    def load(self):
+        return
 
-print("Hello World")
-
-
-## ..
