@@ -1,5 +1,5 @@
 class Song:
 
-    List[MusicPerInst]=[]
-    def __init__(self):
+    List=[] #List of MusicPerInst
+    def __init__(self, MusicPerInstList, timeSig):
         pass
