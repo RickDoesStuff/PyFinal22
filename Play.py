@@ -19,6 +19,10 @@ class Play:
         return
 
     def playSpecific(self):
+        """
+        This function plays a specific song with the substring of the input.
+        :return:
+        """
         return
 
     def pauseMusic(self):
