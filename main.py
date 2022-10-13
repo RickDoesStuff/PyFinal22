@@ -9,9 +9,9 @@ class Main:
         return
 
 
-
 def main():
-    FileUtils.readFile("test.csv", "test.csv") # testing the file utils
+    FileUtils.fileToSong("test.csv", "test.csv")  # testing the file utils
+
 
 if __name__ == "__main__":
     main()

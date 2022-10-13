@@ -34,3 +34,6 @@ class Note:
         :return:
         """
         self.length = length
+
+    def __str__(self):
+        return "[\'" + str(self.getName()) + "\', \'" + str(self.getLength()) + "\']"
