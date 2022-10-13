@@ -11,13 +11,14 @@ class Note:
         :return:
         """
         return self.name
+
     def setName(self, name):
         """
         Set the name of a note
         :param name:
         :return:
         """
-        self.name=name
+        self.name = name
 
     def getLength(self):
         """
@@ -25,10 +26,11 @@ class Note:
         :return:
         """
         return self.length
+
     def setLength(self, length):
         """
         Set the new length of a note
         :param length:
         :return:
         """
-        self.length=length
+        self.length = length

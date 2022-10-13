@@ -3,9 +3,10 @@ import queue
 
 
 class Play:
+    queue = []  # the current queue
+    nowPlaying = None  # the current playing song
+    paused = True
 
-    queue = [] # the current queue
-    nowPlaying = None # the current playing song
     def __init__(self):
         pass
 
@@ -13,29 +14,25 @@ class Play:
         """
         This function plays all musics in the music list.
         """
-        return
+        # WIP
+        pass
 
     def shuffle(self):
         """
-        This function calls getQueue() then convert getQueue() into a list, then shuffles the list,
-        then sets the queue into a list
+        Shuffle the current queue
         :return:
         """
+        self.setQueue(self.getQueue().shuffle())
 
-        return
-
-    def play(self):
+    def play(self, song):
         """
         play a specific song
         :return:
         """
-        return
 
-    def pauseMusic(self):
-        """
-        pause the song and queue
-        :return:
-        """
+        self.setNowPlaying(song)
+        if self.isPaused():
+            self.setPaused(False)
         return
 
     def stopMusic(self):
@@ -43,10 +40,8 @@ class Play:
         Stop the current song and end the queue
         :return:
         """
-        for song in queue:
-            queue.pop()
-
-
+        self.nowPlaying = None
+        self.setQueue(None)
 
     def getQueue(self):
         """
@@ -55,15 +50,13 @@ class Play:
         """
         return self.queue
 
-    def setQueue(self, newQueue):
+    def setQueue(self, queue):
         """
         overwrites the current queue with a new queue
         :param queue:
         :return:
         """
-        # check if newQueue is a valid list of songs
-
-        queue=newQueue
+        self.queue = queue
 
     def removeFromQueue(self, indexToRemove):
         """
@@ -71,11 +64,10 @@ class Play:
         :param indexToRemove:
         :return:
         """
-
-        if indexToRemove < len(queue) and indexToRemove >= 0:
-            return queue.pop(indexToRemove)
-        print("removeFromQueue error")
-        return None
+        tempQueue = self.getQueue() # copy the queue
+        toReturn = tempQueue.pop(indexToRemove) # return the song removed from the queue
+        self.setQueue(tempQueue) # set the queue
+        return toReturn
 
     def addToQueue(self, songToAdd):
         """
@@ -83,13 +75,33 @@ class Play:
         :param songToAdd:
         :return:
         """
-        # check if songToAdd is a valid song type
+        if self.getQueue() is not None: # I might not need this if statement, do testing with appending to a None list
+            self.queue.append(songToAdd)
+        else:
+            self.queue = [songToAdd]
 
-        queue.append(songToAdd)
-
-    def skipQueue(self):
+    def skipCurrent(self):
         """
         Skip the current song
         :return:
         """
-        return skippedSong
+        skippedSong = self.getNowPlaying()
+
+        self.play(self.removeFromQueue(0)) # play the new song and remove it from the queue
+
+        return skippedSong # ret the song skipped
+
+    def isPaused(self):
+        """
+        Get if the queue is paused
+        :return:
+        """
+        return self.paused
+
+    def setPaused(self, paused):
+        """
+        Set if the queue is paused
+        :param paused:
+        :return:
+        """
+        self.paused = paused
