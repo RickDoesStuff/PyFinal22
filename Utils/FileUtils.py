@@ -15,7 +15,6 @@ class FileUtils:
         :param fileName:
         :return:
         """
-        print("Here")
 
         with open(fileName, newline="") as file:
             reader = csv.reader(file)
@@ -36,7 +35,7 @@ class FileUtils:
 
             musicPerInst = MusicPerInst(notes, inst, key)
             song = Song(title, musicPerInst, sig, 0)
-            song.strPrint()
+            # song.strPrint()
             return song
         print("Error: Exited with statement early #fileToSong")
         return None
