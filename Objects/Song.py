@@ -1,11 +1,27 @@
 class Song:
 
-    def __init__(self, musicPerInstList, timeSig, currentPosition):
+    def __init__(self, title, musicPerInstList, timeSig, currentPosition):
+        self.title = title
         self.musicPerInstList = musicPerInstList
         self.timeSig = timeSig
         self.currentPosition = currentPosition
 
         pass
+
+    def getTitle(self):
+        """
+        Get the title of the song
+        :return:
+        """
+        return self.title
+
+    def setTitle(self, title):
+        """
+        Set a new title for a song
+        :param title:
+        :return:
+        """
+        self.title = title
 
     def getMusicPerInstList(self):
         """
@@ -34,8 +50,7 @@ class Song:
         self.setMusicPerInstList(instList)
 
     def delMusicPerInstList(self, instrumentIndex):
-        pass # WIP
-
+        pass  # WIP
 
     def getTimeSig(self):
         """
@@ -73,3 +88,11 @@ class Song:
         :return:
         """
         self.currentPosition += 1
+
+    def __str__(self):
+        return "[\"" + str(self.title) + "\", \"" + str(self.musicPerInstList) + "\", \"" + \
+               str(self.timeSig) + "\", \"" + str(self.currentPosition) + "\"]"
+
+    def strPrint(self):
+        print("[\"" + str(self.title) + "\", \"" + str(self.timeSig) + "\", \"" + str(self.currentPosition) + "\"]")
+        self.musicPerInstList.strPrint()

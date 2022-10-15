@@ -50,3 +50,11 @@ class MusicPerInst:
         :return:
         """
         self.key = key
+
+    def __str__(self):
+        return "[" + str(self.notes) + ", " + str(self.instrument) + ", " + str(self.key) + "]"
+
+    def strPrint(self):
+        print("[\"" + str(self.instrument) + "\", \"" + str(self.key) + "\"]")
+        for note in self.notes:
+            print(note)
