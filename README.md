@@ -34,7 +34,8 @@ file and put them into a list.
 - Then on the following lines you can have the note and length in seconds held for
   - Ex: "a",1.5
 - An example file will look like<br />
-  "test song 1","piano","c","2/4"<br />
+  "test song 1","2/4"<br />
+  "piano","c"<br />
   "a",1.5<br />
   "b",2.5<br />
   "c",3.5<br />
