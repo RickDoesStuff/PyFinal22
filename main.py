@@ -1,4 +1,4 @@
-from Utils.FileUtils import FileUtils
+from Utils.FileUtils import fileToSong
 
 
 class Main:
@@ -11,7 +11,7 @@ class Main:
 
 def main():
     songs = []
-    songs.append(FileUtils.fileToSong("test.csv", "test.csv"))  # testing the file utils
+    songs.append(fileToSong("test.csv"))  # testing the file utils
     print(str(songs[0]))
     songs[0].strPrint()
 
