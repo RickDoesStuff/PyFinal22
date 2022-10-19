@@ -95,4 +95,5 @@ class Song:
 
     def strPrint(self):
         print("[\"" + str(self.title) + "\", \"" + str(self.timeSig) + "\", \"" + str(self.currentPosition) + "\"]")
-        self.musicPerInstList.strPrint()
+        for musicPerInst in self.musicPerInstList:
+            musicPerInst.strPrint()
