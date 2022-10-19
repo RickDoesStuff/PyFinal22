@@ -23,15 +23,6 @@ def fileToSong(fileName):
         inst = None
         key = None
         for row in reader:
-            """
-            if len(row) == 4:  # if a row in the file has 4 items, it's the header, and it should define everything
-                title = row[0]
-                inst = row[1]
-                key = row[2]
-                sig = row[3]
-                continue
-            """
-
             if isinstance(row[0], str) and isinstance(row[1], str):  # it is either a header or new instrument
                 if "/" in row[1]:  # it is a header bc it contains time sig
                     title = row[0]
@@ -48,7 +39,7 @@ def fileToSong(fileName):
                 notes.append(note)
 
         song = Song(title, instPer, sig, 0)
-        # song.strPrint()
+
         return song
     print("Error: Exited with statement early #fileToSong")
     return None
