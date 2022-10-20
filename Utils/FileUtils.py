@@ -7,7 +7,7 @@ from Objects.Song import Song
 
 def fileToSong(fileName):
     """
-
+    Converts a file to a song type
     :param String fileName:
     :return Song:
     """
@@ -43,8 +43,3 @@ def fileToSong(fileName):
         return song
     print("Error: Exited with statement early #fileToSong")
     return None
-
-
-class FileUtils:
-    def __init__(self):
-        pass
