@@ -38,7 +38,7 @@ def fileToSong(fileName):
                     key = row[1]
                     print("new inst and key: ", inst, key)
             else:  # it's not a header or new instrument
-                note = Note(row[0], row[1])
+                note = Note(row[0], round(float(row[1]), 1)) # note name, note length
                 notes.append(note)
                 print("New note added: ", str(note))
 
