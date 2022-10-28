@@ -1,18 +1,21 @@
 from Utils import MusicUtils
 from Utils import FileUtils
+from Gui import Button
 
 
 def main():
-    songs = []
-    fileNames = ["test.csv"]
-    load(songs, fileNames)
-    MusicUtils.init()
+    #songs = []
+    #fileNames = ["test.csv"]
+    #load(songs, fileNames)
+    #MusicUtils.init()
 
-    print("\n\nPlaying\n\n")
-    for musicPerInst in songs[0].getMusicPerInstList():
-        for note in musicPerInst.getNotes():
-            print(str(note))
-            MusicUtils.playNote(note)
+    #print("\n\nPlaying\n\n")
+
+    #for musicPerInst in songs[0].getMusicPerInstList():
+    #    for note in musicPerInst.getNotes():
+    #        print(str(note))
+    #        MusicUtils.playNote(note)
+    Button.newMethod()
 
 
 def load(songs, fileNames):
