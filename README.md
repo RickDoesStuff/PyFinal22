@@ -29,16 +29,25 @@ file and put them into a list.
 <br />
 
 # How to setup a song file
-- First you must have the song name, instrument, key and time sig on the first line
-  - Ex: "test song 1","piano","c","2/4"
-- Then on the following lines you can have the note and length in seconds held for
-  - Ex: "a",1.5
+- First you must have the song name, time sig and the tempo/bmp
+  - Ex: "test song 1","2/4","125"
+- Then you will have the instrument, the key, and a description
+  - Ex: "piano","c","desc"
+- Then on the following lines you can have the note and length in beats held for
+  - Ex: "a2",1.5
 - An example file will look like<br />
-  "test song 1","2/4"<br />
-  "piano","c"<br />
-  "a",1.5<br />
-  "b",2.5<br />
-  "c",3.5<br />
-  "d",4.5<br />
-  "e",5.5<br />
-  "f",6.5
+"test song 1","2/4","125"<br />
+"piano","c","desc"<br />
+"a1",1.5<br />
+"b1",2.5<br />
+"c1",3.5<br />
+"d1",4.5<br />
+"e1",5.5<br />
+"f1",6.5<br />
+"trumpet","c","desc"<br />
+"a",1.5<br />
+"b",2.5<br />
+"c",3.5<br />
+"d",4.5<br />
+"e-1",5.5<br />
+"f-1",6.5<br />
