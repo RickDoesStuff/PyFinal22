@@ -5,10 +5,10 @@ from Gui import Gui
 
 
 def main():
-    songs = []
-    fileNames = ["test.csv"]
-    load(songs, fileNames)
-    MusicUtils.init()
+#    songs = []
+#    fileNames = ["test.csv"]
+#    load(songs, fileNames)
+#    MusicUtils.init()
 
     #print("\n\nPlaying\n\n")
 
@@ -20,11 +20,11 @@ def main():
     #Button.newMethod()
     Gui.newMethod(songs)
 
-def load(songs, fileNames):
-    for fileName in fileNames:
-        songs.append(FileUtils.fileToSong(fileName))  # Load all the files as the song type
+#def load(songs, fileNames):
+#    for fileName in fileNames:
+#        songs.append(FileUtils.fileToSong(fileName))  # Load all the files as the song type
 
-    return
+#    return
 
 
 if __name__ == "__main__":
