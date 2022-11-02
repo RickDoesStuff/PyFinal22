@@ -1,13 +1,14 @@
 from Utils import MusicUtils
 from Utils import FileUtils
 from Gui import Button
+from Gui import Gui
 
 
 def main():
-    #songs = []
-    #fileNames = ["test.csv"]
-    #load(songs, fileNames)
-    #MusicUtils.init()
+    songs = []
+    fileNames = ["test.csv"]
+    load(songs, fileNames)
+    MusicUtils.init()
 
     #print("\n\nPlaying\n\n")
 
@@ -15,8 +16,9 @@ def main():
     #    for note in musicPerInst.getNotes():
     #        print(str(note))
     #        MusicUtils.playNote(note)
-    Button.newMethod()
 
+    #Button.newMethod()
+    Gui.newMethod(songs)
 
 def load(songs, fileNames):
     for fileName in fileNames:
