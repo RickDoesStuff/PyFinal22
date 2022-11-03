@@ -16,12 +16,9 @@ def newMethod(self, songs=0):
     height = newSurface.get_height()
 
     buttonList = []
-    buttonList.append(Button.Button(songs, newSurface, 180, 30, 50, "white", 300, 0,
-                                    100, 150, 20, "Pause"))
-    buttonList.append(Button.Button(songs, newSurface, 0, 80, 170, "white", 100, 50,
-                                    100, 150, 20, "Resume"))
-    buttonList.append(Button.Button([FileUtils.fileToSong("a1.csv")], newSurface, 0, 80, 170, "white", 100, 150,
-                                    100, 150, 20, "Play Default"))
+    pauseButton(buttonList, newSurface)
+    resumeButton(buttonList, newSurface)
+    playAllButton(buttonList, newSurface)
 
 
     while True:
@@ -63,24 +60,28 @@ def newMethod(self, songs=0):
 
 
 
-def resumeButton():
+def playAllButton(buttonList, newSurface):
     """
     Creates a resume button and puts it on the screen
     :return:
     """
+    buttonList.append(Button.Button(newSurface, 0, 80, 170, "white", 100, 150,
+                                    100, 150, 20, "PlayAll"))
 
-def resumeButtonClick():
+def playAllButtonClick():
     """
-    Calls resume() in Play.py when the button is clicked
+    Calls playAll() in Play.py when the button is clicked
     :return:
     """
-    Play.resume()
+    Play.playAll()
 
-def pauseButton():
+def pauseButton(buttonList, newSurface):
     """
     Create a pause button and puts it on the screen
     :return:
     """
+    buttonList.append(Button.Button(newSurface, 180, 30, 50, "white", 300, 0,
+                                    100, 150, 20, "Pause"))
 
 
 def pauseButtonClick():
@@ -90,18 +91,21 @@ def pauseButtonClick():
     """
     Play.pause()
 
-def playButton():
+def resumeButton(buttonList, newSurface):
     """
     Creates a play button and puts it on the screen
     :return:
     """
+    buttonList.append(Button.Button(newSurface, 0, 80, 170, "white", 100, 50,
+                                    100, 150, 20, "Resume"))
 
-def playButtonClick():
+
+def resumeButtonClick():
     """
     Calls play() in Play.py when the button is clicked
     :return:
     """
-    Play.play()
+    Play.resume()
 
 def stopButton():
     """
@@ -109,3 +113,9 @@ def stopButton():
     :return:
     """
 
+def stopButtonClick():
+    """
+    Calls stop() in Play.py when the button is click
+    :return:
+    """
+    Play.stop()
