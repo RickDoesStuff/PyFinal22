@@ -3,6 +3,8 @@ import pygame as pg
 import threading
 import time as t
 
+import Main
+
 
 def init():
     pg.mixer.init()
@@ -16,6 +18,12 @@ def playSong(song):
     :param song: The song obj
     :return: nothing
     """
+    print("\n\nPlaying\n\n")
+
+    for musicPerInst in song.getMusicPerInstList():
+        for note in musicPerInst.getNotes():
+            print(str(note))
+            playNote(note)
 
     return
 

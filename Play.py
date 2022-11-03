@@ -1,6 +1,8 @@
 ## Plays
 import queue
 
+import Utils.MusicUtils
+
 
 class Play:
     queue = []  # the current queue
@@ -31,9 +33,11 @@ class Play:
         """
 
         self.setNowPlaying(song)
-        if self.isPaused():
-            self.setPaused(False)
+        self.unpause()
+        Utils.MusicUtils.playSong(song)
+
         return
+
 
     def stopMusic(self):
         """
@@ -102,3 +106,24 @@ class Play:
         :return:
         """
         self.paused = paused
+
+    def pause(self):
+        """
+        Pause the song
+        :return:
+        """
+        self.paused = True
+
+    def resume(self):
+        """
+        resume the song
+        :return:
+        """
+        self.paused = False
+
+    def togglePause(self):
+        """
+
+        :return:
+        """
+        self.paused = not self.paused()

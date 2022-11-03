@@ -1,26 +1,12 @@
 import pygame
 
 from Gui import Button
+from Play import Play
 from Utils import FileUtils
 from Utils import MusicUtils
 class Gui:
 
-    songs = []
-    fileNames = ["test.csv"]
-    MusicUtils.init()
-    def load(songs, fileNames):
-        """
-        this method loads a song list
-        :param fileNames:
-        :return:
-        """
-
-        for fileName in fileNames:
-            songs.append(FileUtils.fileToSong(fileName))  # Load all the files as the song type
-        return
-    load(songs, fileNames)
-
-    def newMethod(songs):
+    def newMethod(self, songs=0):
         """
         This method sets up the Gui for the music player program.
         :return:
@@ -33,11 +19,11 @@ class Gui:
 
         buttonList = []
         buttonList.append(Button.Button(songs, newSurface, 180, 30, 50, "white", 300, 0,
-                                        100, 150, 20, "TEST SONG"))
+                                        100, 150, 20, "Pause"))
         buttonList.append(Button.Button(songs, newSurface, 0, 80, 170, "white", 100, 50,
-                                        100, 150, 20, "TEST SONG"))
+                                        100, 150, 20, "Resume"))
         buttonList.append(Button.Button([FileUtils.fileToSong("a1.csv")], newSurface, 0, 80, 170, "white", 100, 150,
-                                        100, 150, 20, "Play A1"))
+                                        100, 150, 20, "Play Default"))
 
 
         while True:
@@ -51,10 +37,10 @@ class Gui:
                         if button.getXAxis() <= mouse[0] <= button.getXAxis() + button.getButtonWidth() \
                                 and button.getYAxis() <= mouse[1] <= button.getYAxis() + button.getButtonHeight():
                             print("\n\nPlaying\n\n")
-                            for musicPerInst in button.getSongs()[0].getMusicPerInstList():
-                                for note in musicPerInst.getNotes():
-                                    print(str(note))
-                                    MusicUtils.playNote(note)
+                            #for musicPerInst in button.getSongs()[0].getMusicPerInstList():
+                            #    for note in musicPerInst.getNotes():
+                            #        print(str(note))
+                            #        MusicUtils.playNote(note)
 
                         print("hi")
 
@@ -77,9 +63,51 @@ class Gui:
                                        button.getYAxis()+button.getButtonHeight()/2-button.getFontSize()//2))
             pygame.display.update()
 
-    newMethod(songs)
 
 
+def resumeButton():
+    """
+    Creates a resume button and puts it on the screen
+    :return:
+    """
+
+def resumeButtonClick():
+    """
+    Calls resume() in Play.py when the button is clicked
+    :return:
+    """
+    Play.resume()
+
+def pauseButton():
+    """
+    Create a pause button and puts it on the screen
+    :return:
+    """
 
 
+def pauseButtonClick():
+    """
+    Calls pause() in Play.py when the button is clicked
+    :return:
+    """
+    Play.pause()
+
+def playButton():
+    """
+    Creates a play button and puts it on the screen
+    :return:
+    """
+
+def playButtonClick():
+    """
+    Calls play() in Play.py when the button is clicked
+    :return:
+    """
+    Play.play()
+
+def stopButton():
+    """
+    Creates a stop button and puts it on the screen
+    :return:
+    """
 

@@ -18,7 +18,7 @@ class Button:
         self.textColor = textColor
         self.buttonText = buttonText
         self.fontSize = fontSize
-        self.songs = songs
+        #self.songs = songs
 
 
         backgroundColor = (redShade,greenShade,blueShade)
@@ -111,10 +111,10 @@ class Button:
         """
         return self.fontSize
 
-    def getSongs(self):
+    #def getSongs(self):
         """
         This method returns the song list from the constructor
         :return:
         songs from constructor
         """
-        return self.songs
+    #    return self.songs
