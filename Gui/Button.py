@@ -3,7 +3,7 @@ import pygame
 class Button:
 
 
-    def __init__(self, songs, newSurface, redShade=200, greenShade=30, blueShade=80,
+    def __init__(self, newSurface, redShade=200, greenShade=30, blueShade=80,
                 textColor="white", xAxis=200, yAxis=0, buttonHeight=50, buttonWidth=150, fontSize=20,
                 buttonText="test"):
 
@@ -18,7 +18,6 @@ class Button:
         self.textColor = textColor
         self.buttonText = buttonText
         self.fontSize = fontSize
-        #self.songs = songs
 
 
         backgroundColor = (redShade,greenShade,blueShade)
@@ -27,7 +26,7 @@ class Button:
         newSurface.fill("black")
         width = newSurface.get_width()
         height = newSurface.get_height()
-        buttonFont = pygame.font.SysFont("Serif", fontSize)
+        buttonFont = pygame.font.SysFont("Serif", int(fontSize))
         text = buttonFont.render(buttonText, True, textColor)
         color = (redShade,blueShade,greenShade)
 
