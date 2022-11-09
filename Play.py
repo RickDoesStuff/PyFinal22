@@ -1,5 +1,6 @@
 ## Plays
 import queue
+import time
 
 import Utils.MusicUtils
 
@@ -12,11 +13,13 @@ class Play:
     def __init__(self):
         pass
 
-    def playAll(self):
+    def playAll(self, songList):
         """
-        This function plays all musics in the music list.
+        This function plays all musics in the songList.
         """
-        # WIP
+        self.setQueue(songList)
+        self.skipCurrent()
+
         pass
 
     def shuffle(self):
@@ -28,18 +31,26 @@ class Play:
 
     def play(self, song):
         """
-        play a specific song
+        play a specific song & runs through the queue
         :return:
         """
 
-        self.setNowPlaying(song)
-        self.unpause()
+        self.nowPlaying = song
+        self.resume()
         Utils.MusicUtils.playSong(song)
 
+        time.sleep(1)  # sleep for 1 second between songs
+
+        print("Song that ended:", self.nowPlaying)
+
+        if len(self.getQueue()) > 0:
+            songToPlay = self.removeFromQueue(0)
+            print("Now playing:", songToPlay)
+            self.play(songToPlay)  # recursion
+        else:
+            print("Queue is now empty!")
+
         return
-
-
-
 
     def stopMusic(self):
         """
@@ -47,6 +58,7 @@ class Play:
         :return:
         """
         self.nowPlaying = None
+        self.pause()
         self.setQueue(None)
 
     def getQueue(self):
@@ -70,9 +82,9 @@ class Play:
         :param indexToRemove:
         :return:
         """
-        tempQueue = self.getQueue() # copy the queue
-        toReturn = tempQueue.pop(indexToRemove) # return the song removed from the queue
-        self.setQueue(tempQueue) # set the queue
+        tempQueue = self.getQueue()  # copy the queue
+        toReturn = tempQueue.pop(indexToRemove)  # return the song removed from the queue
+        self.setQueue(tempQueue)  # set the queue
         return toReturn
 
     def addToQueue(self, songToAdd):
@@ -88,11 +100,10 @@ class Play:
         Skip the current song
         :return:
         """
-        skippedSong = self.getNowPlaying()
+        skippedSong = self.nowPlaying
+        self.play(self.removeFromQueue(0))  # play the new song and remove it from the queue
 
-        self.play(self.removeFromQueue(0)) # play the new song and remove it from the queue
-
-        return skippedSong # ret the song skipped
+        return skippedSong  # ret the song skipped
 
     def isPaused(self):
         """
@@ -100,14 +111,6 @@ class Play:
         :return:
         """
         return self.paused
-
-    def setPaused(self, paused):
-        """
-        Set if the queue is paused
-        :param paused:
-        :return:
-        """
-        self.paused = paused
 
     def pause(self):
         """
@@ -122,10 +125,3 @@ class Play:
         :return:
         """
         self.paused = False
-
-    def togglePause(self):
-        """
-
-        :return:
-        """
-        self.paused = not self.paused()

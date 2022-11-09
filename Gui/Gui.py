@@ -1,5 +1,7 @@
 import sys
 import pygame
+
+import Songbook
 from Gui import Button
 from Play import Play
 from Utils import FileUtils
@@ -11,6 +13,7 @@ def newMethod(self, songs=0):
     This method sets up the Gui for the music player program.
     :return:
     """
+    play = Play()
     pygame.init()
     newSurface = pygame.display.set_mode((600, 600))
     newSurface.fill("black")
@@ -48,7 +51,7 @@ def newMethod(self, songs=0):
                 i = 0
                 for button in buttonList:
                     if isHovering(button, mouse):
-                        clickButton(newSurface, button, buttonList)
+                        clickButton(newSurface, button, buttonList, play)
                         print("clicked")
 
         mouse = pygame.mouse.get_pos()
@@ -75,12 +78,12 @@ def playAllButton(buttonList, newSurface):
                                     100, 150, 20, "PlayAll"))
 
 
-def playAllButtonClick():
+def playAllButtonClick(play):
     """
     Calls playAll() in Play.py when the button is clicked
     :return:
     """
-    Play.playAll()
+    play.playAll(Songbook.songs)
 
 
 def pauseButton(buttonList, newSurface):
@@ -92,12 +95,12 @@ def pauseButton(buttonList, newSurface):
                                     100, 150, 20, "Pause"))
 
 
-def pauseButtonClick():
+def pauseButtonClick(play):
     """
     Calls pause() in Play.py when the button is clicked
     :return:
     """
-    Play.pause(Play)
+    play.pause(Play)
 
 
 def resumeButton(buttonList, newSurface):
@@ -109,12 +112,12 @@ def resumeButton(buttonList, newSurface):
                                     100, 150, 20, "Resume"))
 
 
-def resumeButtonClick():
+def resumeButtonClick(play):
     """
     Calls play() in Play.py when the button is clicked
     :return:
     """
-    Play.resume(Play)
+    play.resume(Play)
 
 
 def stopButton(buttonList, newSurface):
@@ -125,12 +128,12 @@ def stopButton(buttonList, newSurface):
     buttonList.append(Button.Button(newSurface, 0, 80, 170, "red", 300, 150, 100, 150, 20, "stop"))
 
 
-def stopButtonClick():
+def stopButtonClick(play):
     """
     Calls stop() in Play.py when the button is click
     :return:
     """
-    Play.stopMusic(Play)
+    play.stopMusic(Play)
 
 
 def addTestToQueueButton(buttonList, newSurface):
@@ -138,8 +141,8 @@ def addTestToQueueButton(buttonList, newSurface):
                                     100, 150, 20, "Add Test"))
 
 
-def addTestToQueueButtonClick():
-    Play.addToQueue(Play, "test.csv")
+def addTestToQueueButtonClick(play):
+    play.addToQueue(Play, "test.csv")
 
 
 def playTestButton(buttonList, newSurface):
@@ -185,7 +188,7 @@ def playButtonClick(note):
     pass
 
 
-def clickButton(newSurface, button, buttonList):
+def clickButton(newSurface, button, buttonList, play):
     """
     This function checks which button to click on.
     :param newSurface: the surface that is being clicking in
@@ -194,17 +197,17 @@ def clickButton(newSurface, button, buttonList):
     :return:
     """
     if button == buttonList[0]:
-        pauseButtonClick()
+        pauseButtonClick(play)
     elif button == buttonList[1]:
-        resumeButtonClick()
+        resumeButtonClick(play)
     elif button == buttonList[2]:
-        playAllButtonClick()
+        playAllButtonClick(play)
     elif button == buttonList[3]:
-        stopButtonClick()
+        stopButtonClick(play)
     elif button == buttonList[4]:
-        addTestToQueueButtonClick()
+        addTestToQueueButtonClick(play)
     elif button == buttonList[5]:
-        playTestButtonClick()
+        playTestButtonClick(play)
     elif button == buttonList[6]:
         playButtonClick("a1.csv")
     elif button == buttonList[7]:
