@@ -1,12 +1,13 @@
 import sys
 import pygame
 
+import threading
+
 import Songbook
 from Gui import Button
 from Play import Play
 from Utils import FileUtils
 from Utils import MusicUtils
-
 
 def newMethod(self, songs=0):
     """
@@ -31,6 +32,7 @@ def newMethod(self, songs=0):
     noteListWhite = ["A1", "A3", "A4", "A5", "A6"]
     noteListBlack = ["A1#", "A2#", "A4#", "A5#", "A6#"]
 
+
     x = 200
     y = 500
     for note in noteListWhite:
@@ -51,7 +53,10 @@ def newMethod(self, songs=0):
                 i = 0
                 for button in buttonList:
                     if isHovering(button, mouse):
-                        clickButton(newSurface, button, buttonList, play)
+                        thread = threading.Thread(target=clickButton, args=(newSurface, button, buttonList, play,))
+                        # clickButton(newSurface, button, buttonList, play)
+                        thread.start()
+                        Songbook.threads.append(thread)
                         print("clicked")
 
         mouse = pygame.mouse.get_pos()
@@ -100,7 +105,7 @@ def pauseButtonClick(play):
     Calls pause() in Play.py when the button is clicked
     :return:
     """
-    play.pause(Play)
+    play.pause()
 
 
 def resumeButton(buttonList, newSurface):
@@ -133,7 +138,7 @@ def stopButtonClick(play):
     Calls stop() in Play.py when the button is click
     :return:
     """
-    play.stopMusic(Play)
+    play.stopMusic()
 
 
 def addTestToQueueButton(buttonList, newSurface):
@@ -142,7 +147,7 @@ def addTestToQueueButton(buttonList, newSurface):
 
 
 def addTestToQueueButtonClick(play):
-    play.addToQueue(Play, "test.csv")
+    play.addToQueue("test.csv", play)
 
 
 def playTestButton(buttonList, newSurface):
@@ -150,8 +155,8 @@ def playTestButton(buttonList, newSurface):
                                     100, 150, 20, "Play Test"))
 
 
-def playTestButtonClick():
-    MusicUtils.playSong(FileUtils.fileToSong("a1.csv"))
+def playTestButtonClick(play):
+    play.play(FileUtils.fileToSong("test.csv"))
 
 
 def drawButton(newSurface, button, x=0):
@@ -168,6 +173,8 @@ def quitProgramButton(buttonList, newSurface):
 
 
 def quitProgramButtonClick():
+    for thread in Songbook.threads:
+        thread.join()
     print("Thanks for using the program!")
     exit()
 
@@ -183,19 +190,20 @@ def playPianoKeyButton(buttonList, newSurface, r, g, b, color, name, xPos, yPos,
     return
 
 
-def playButtonClick(note):
-    MusicUtils.playSong(FileUtils.fileToSong(note))
+def playButtonClick(note, play):
+    MusicUtils.playSong(FileUtils.fileToSong(note), play)
     pass
 
 
 def clickButton(newSurface, button, buttonList, play):
     """
-    This function checks which button to click on.
+    This function checks which button to was clicked on.
     :param newSurface: the surface that is being clicking in
     :param button: the button that is being click on
     :param buttonList: the list of buttons to check in
     :return:
     """
+
     if button == buttonList[0]:
         pauseButtonClick(play)
     elif button == buttonList[1]:
@@ -209,24 +217,24 @@ def clickButton(newSurface, button, buttonList, play):
     elif button == buttonList[5]:
         playTestButtonClick(play)
     elif button == buttonList[6]:
-        playButtonClick("a1.csv")
+        playButtonClick("a1.csv", play)
     elif button == buttonList[7]:
-        playButtonClick("a3.csv")
+        playButtonClick("a3.csv", play)
     elif button == buttonList[8]:
-        playButtonClick("a4.csv")
+        playButtonClick("a4.csv", play)
     elif button == buttonList[9]:
-        playButtonClick("a5.csv")
+        playButtonClick("a5.csv", play)
     elif button == buttonList[10]:
-        playButtonClick("a6.csv")
+        playButtonClick("a6.csv", play)
     elif button == buttonList[11]:
-        playButtonClick("a-1.csv")
+        playButtonClick("a-1.csv", play)
     elif button == buttonList[12]:
-        playButtonClick("a-2.csv")
+        playButtonClick("a-2.csv", play)
     elif button == buttonList[13]:
-        playButtonClick("a-4.csv")
+        playButtonClick("a-4.csv", play)
     elif button == buttonList[14]:
-        playButtonClick("a-5.csv")
+        playButtonClick("a-5.csv", play)
     elif button == buttonList[15]:
-        playButtonClick("a-6.csv")
+        playButtonClick("a-6.csv", play)
     elif button == buttonList[16]:
         quitProgramButtonClick()

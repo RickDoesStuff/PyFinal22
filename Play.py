@@ -1,8 +1,11 @@
 ## Plays
 import queue
+import threading
 import time
 
+import Songbook
 import Utils.MusicUtils
+from Utils import GenUtils
 
 
 class Play:
@@ -17,7 +20,7 @@ class Play:
         """
         This function plays all musics in the songList.
         """
-        self.setQueue(songList)
+        self.setQueue(GenUtils.deepCopy(songList))
         self.skipCurrent()
 
         pass
@@ -27,7 +30,7 @@ class Play:
         Shuffle the current queue
         :return:
         """
-        self.setQueue(self.getQueue().shuffle())
+        self.getQueue().shuffle()
 
     def play(self, song):
         """
@@ -37,13 +40,16 @@ class Play:
 
         self.nowPlaying = song
         self.resume()
-        Utils.MusicUtils.playSong(song)
+        Utils.MusicUtils.playSong(song, self)
 
         time.sleep(1)  # sleep for 1 second between songs
 
-        print("Song that ended:", self.nowPlaying)
+        print("Song that ended:", song.getTitle())
 
-        if len(self.getQueue()) > 0:
+        if self.getQueue() is None:
+            print("Queue is now empty!")
+
+        elif len(self.getQueue()) > 0:
             songToPlay = self.removeFromQueue(0)
             print("Now playing:", songToPlay)
             self.play(songToPlay)  # recursion
@@ -60,6 +66,11 @@ class Play:
         self.nowPlaying = None
         self.pause()
         self.setQueue(None)
+
+        if len(Songbook.threads) > 0:
+            thread = Songbook.threads[0]
+
+        return
 
     def getQueue(self):
         """
@@ -82,7 +93,7 @@ class Play:
         :param indexToRemove:
         :return:
         """
-        tempQueue = self.getQueue()  # copy the queue
+        tempQueue = GenUtils.deepCopy(self.getQueue())  # copy the queue
         toReturn = tempQueue.pop(indexToRemove)  # return the song removed from the queue
         self.setQueue(tempQueue)  # set the queue
         return toReturn
