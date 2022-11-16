@@ -49,6 +49,7 @@ def newMethod(self, songs=0):
         for moment in pygame.event.get():
             if moment.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit()
             if moment.type == pygame.MOUSEBUTTONDOWN:
                 i = 0
                 for button in buttonList:
@@ -79,7 +80,7 @@ def playAllButton(buttonList, newSurface):
     Creates a resume button and puts it on the screen
     :return:
     """
-    buttonList.append(Button.Button(newSurface, 0, 80, 170, "white", 100, 150,
+    buttonList.append(Button.Button(newSurface, 0, 80, 170, "white", 50, 150,
                                     100, 150, 20, "PlayAll"))
 
 
@@ -96,7 +97,7 @@ def pauseButton(buttonList, newSurface):
     Create a pause button and puts it on the screen
     :return:
     """
-    buttonList.append(Button.Button(newSurface, 180, 30, 50, "white", 300, 0,
+    buttonList.append(Button.Button(newSurface, 180, 30, 50, "white", 225, 10,
                                     100, 150, 20, "Pause"))
 
 
@@ -113,7 +114,7 @@ def resumeButton(buttonList, newSurface):
     Creates a play button and puts it on the screen
     :return:
     """
-    buttonList.append(Button.Button(newSurface, 0, 80, 170, "white", 100, 50,
+    buttonList.append(Button.Button(newSurface, 0, 170, 40, "white", 50, 10,
                                     100, 150, 20, "Resume"))
 
 
@@ -130,7 +131,7 @@ def stopButton(buttonList, newSurface):
     Creates a stop button and puts it on the screen
     :return:
     """
-    buttonList.append(Button.Button(newSurface, 0, 80, 170, "red", 300, 150, 100, 150, 20, "stop"))
+    buttonList.append(Button.Button(newSurface, 180, 30, 50, "white", 225, 150, 100, 150, 20, "Stop"))
 
 
 def stopButtonClick(play):
@@ -142,8 +143,8 @@ def stopButtonClick(play):
 
 
 def addTestToQueueButton(buttonList, newSurface):
-    buttonList.append(Button.Button(newSurface, 0, 80, 170, "white", 400, 150,
-                                    100, 150, 20, "Add Test"))
+    buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 400, 10,
+                                    0, 0, 0, ""))
 
 
 def addTestToQueueButtonClick(play):
@@ -151,7 +152,7 @@ def addTestToQueueButtonClick(play):
 
 
 def playTestButton(buttonList, newSurface):
-    buttonList.append(Button.Button(newSurface, 0, 80, 170, "white", 400, 50,
+    buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 50, 290,
                                     100, 150, 20, "Play Test"))
 
 
@@ -168,15 +169,21 @@ def drawButton(newSurface, button, x=0):
 
 
 def quitProgramButton(buttonList, newSurface):
-    buttonList.append(Button.Button(newSurface, 0, 80, 100, "white", 300, 400,
-                                    100, 150, 20, "quit program"))
+    buttonList.append(Button.Button(newSurface, 100, 0, 0, "white", 225, 290,
+                                    100, 150, 20, "Quit Program"))
 
 
 def quitProgramButtonClick():
+
     for thread in Songbook.threads:
         thread.join()
     print("Thanks for using the program!")
+    pygame.event.get(pygame.QUIT)
     exit()
+
+
+
+
 
 
 def isHovering(button, mouse):
