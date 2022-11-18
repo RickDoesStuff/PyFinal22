@@ -123,7 +123,8 @@ def resumeButtonClick(play):
     Calls play() in Play.py when the button is clicked
     :return:
     """
-    play.resume(Play)
+    play.play(play.getSong())
+    #play.resume()
 
 
 def stopButton(buttonList, newSurface):

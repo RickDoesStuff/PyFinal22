@@ -136,3 +136,10 @@ class Play:
         :return:
         """
         self.paused = False
+
+    def getSong(self):
+        """
+        return the song
+        :return: the current song
+        """
+        return self.nowPlaying
