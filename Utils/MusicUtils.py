@@ -10,7 +10,7 @@ import Songbook
 def init():
     pg.mixer.init()
     pg.init()
-    pg.mixer.set_num_channels(12)  # amt of notes
+    pg.mixer.set_num_channels(50)  # amt of notes
 
 
 def playSong(song, play):

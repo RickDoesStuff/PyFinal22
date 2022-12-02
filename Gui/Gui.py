@@ -1,6 +1,6 @@
 import sys
 import pygame
-
+import pygame.key
 import threading
 
 import Songbook
@@ -29,8 +29,9 @@ def newMethod(self, songs=0):
     addTestToQueueButton(buttonList, newSurface)
     playTestButton(buttonList, newSurface)
 
-    noteListWhite = ["A1", "A3", "A4", "A5", "A6"]
-    noteListBlack = ["A1#", "A2#", "A4#", "A5#", "A6#"]
+    noteListWhite = ["C3", "C-3", "D3", "D-3", "E3", "F3", "F-3", "G3", "G-3", "A3", "A-3", "B3", "C4"]
+    noteListBlack = []
+
 
 
     x = 200
@@ -42,8 +43,9 @@ def newMethod(self, songs=0):
     for note in noteListBlack:
         playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", note, x, y)
         x += 25
-
     quitProgramButton(buttonList, newSurface)
+
+    playDemonsButton(buttonList, newSurface)
 
     while True:
         for moment in pygame.event.get():
@@ -54,11 +56,38 @@ def newMethod(self, songs=0):
                 i = 0
                 for button in buttonList:
                     if isHovering(button, mouse):
-                        thread = threading.Thread(target=clickButton, args=(newSurface, button, buttonList, play,))
-                        # clickButton(newSurface, button, buttonList, play)
-                        thread.start()
-                        Songbook.threads.append(thread)
+#                        thread = threading.Thread(target=clickButton, args=(newSurface, button, buttonList, play,))
+                        clickButton(newSurface, button, buttonList, play)
+#                        thread.start()
+#                        Songbook.threads.append(thread)
                         print("clicked")
+
+            if pygame.key.get_pressed()[pygame.K_1]:
+                playButtonClick("c3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_2]:
+                playButtonClick("d3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_3]:
+                playButtonClick("e3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_4]:
+                playButtonClick("f3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_5]:
+                playButtonClick("g3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_6]:
+                playButtonClick("a3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_7]:
+                playButtonClick("b3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_8]:
+                playButtonClick("c4.csv", play)
+            if pygame.key.get_pressed()[pygame.K_q]:
+                playButtonClick("c-3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_w]:
+                playButtonClick("d-3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_r]:
+                playButtonClick("f-3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_t]:
+                playButtonClick("g-3.csv", play)
+            if pygame.key.get_pressed()[pygame.K_y]:
+                playButtonClick("a-3.csv", play)
 
         mouse = pygame.mouse.get_pos()
         for button in buttonList:  ##highlights buttons that are hovered over
@@ -160,6 +189,12 @@ def playTestButton(buttonList, newSurface):
 def playTestButtonClick(play):
     play.play(FileUtils.fileToSong("test.csv"))
 
+def playDemonsButton(buttonList, newSurface):
+    buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 50, 500,
+                                    100, 150, 20, "Demons by IG"))
+
+def playDemonsButtonClick(play):
+    play.play(FileUtils.fileToSong("DemonsIG.csv"))
 
 def drawButton(newSurface, button, x=0):
     if button.getRed() + x > 255:
@@ -200,6 +235,7 @@ def playPianoKeyButton(buttonList, newSurface, r, g, b, color, name, xPos, yPos,
 
 def playButtonClick(note, play):
     MusicUtils.playSong(FileUtils.fileToSong(note), play)
+    pygame.mixer.fadeout(1500)
     pass
 
 
@@ -225,24 +261,33 @@ def clickButton(newSurface, button, buttonList, play):
     elif button == buttonList[5]:
         playTestButtonClick(play)
     elif button == buttonList[6]:
-        playButtonClick("a1.csv", play)
+        playButtonClick("c3.csv", play)
     elif button == buttonList[7]:
-        playButtonClick("a3.csv", play)
+        playButtonClick("c-3.csv", play)
     elif button == buttonList[8]:
-        playButtonClick("a4.csv", play)
+        playButtonClick("d3.csv", play)
     elif button == buttonList[9]:
-        playButtonClick("a5.csv", play)
+        playButtonClick("d-3.csv", play)
     elif button == buttonList[10]:
-        playButtonClick("a6.csv", play)
+        playButtonClick("e3.csv", play)
     elif button == buttonList[11]:
-        playButtonClick("a-1.csv", play)
+        playButtonClick("f3.csv", play)
     elif button == buttonList[12]:
-        playButtonClick("a-2.csv", play)
+        playButtonClick("f-3.csv", play)
     elif button == buttonList[13]:
-        playButtonClick("a-4.csv", play)
+        playButtonClick("g3.csv", play)
     elif button == buttonList[14]:
-        playButtonClick("a-5.csv", play)
+        playButtonClick("g-3.csv", play)
     elif button == buttonList[15]:
-        playButtonClick("a-6.csv", play)
+        playButtonClick("a3.csv", play)
     elif button == buttonList[16]:
+        playButtonClick("a-3.csv", play)
+    elif button == buttonList[17]:
+        playButtonClick("b3.csv", play)
+    elif button == buttonList[18]:
+        playButtonClick("c4.csv", play)
+    elif button == buttonList[19]:
         quitProgramButtonClick()
+    elif button == buttonList[20]:
+        playDemonsButtonClick(play)
+

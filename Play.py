@@ -11,7 +11,7 @@ from Utils import GenUtils
 class Play:
     queue = []  # the current queue
     nowPlaying = None  # the current playing song
-    paused = True
+    paused = False
 
     def __init__(self):
         pass
