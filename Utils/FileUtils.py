@@ -40,10 +40,10 @@ def fileToSong(fileName):
             else:  # it's not a header or new instrument
                 try:
                     note = Note(row[0], round(float(row[1]), 1), row[2], row[3], row[4]) # note name, note length, note volume, note fadout time, boolean to pause
-                    pygame.mixer.Sound("PianoNotes/"+row[0]+".wav").set_volume(float(row[2]))
-                    pygame.mixer.fadeout(int(row[3]))
-                    if row[4] == True:
-                        pygame.mixer.pause()
+                    #pygame.mixer.Sound("PianoNotes/"+row[0]+".wav").set_volume(float(row[2]))
+                    #pygame.mixer.fadeout(int(row[3]))
+                    #if row[4] == True:
+                    #    pygame.mixer.pause()
                     notes.append(note)
 
 
