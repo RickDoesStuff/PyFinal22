@@ -56,10 +56,10 @@ def newMethod(self, songs=0):
                 i = 0
                 for button in buttonList:
                     if isHovering(button, mouse):
-#                        thread = threading.Thread(target=clickButton, args=(newSurface, button, buttonList, play,))
+                        thread = threading.Thread(target=clickButton, args=(newSurface, button, buttonList, play,))
                         clickButton(newSurface, button, buttonList, play)
-#                        thread.start()
-#                        Songbook.threads.append(thread)
+                        thread.start()
+                        Songbook.threads.append(thread)
                         print("clicked")
 
             if pygame.key.get_pressed()[pygame.K_1]:
