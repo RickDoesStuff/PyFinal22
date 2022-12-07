@@ -349,6 +349,7 @@ def playButtonClick(note, play):
     :param play:
     :return:
     """
+    play.resume()
     MusicUtils.playSong(FileUtils.fileToSong(note), play)
     pygame.mixer.fadeout(1500)
     pass
