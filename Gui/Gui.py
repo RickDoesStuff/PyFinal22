@@ -2,6 +2,7 @@ import sys
 import pygame
 import pygame.key
 import threading
+import time
 
 import Songbook
 from Gui import Button
@@ -22,6 +23,8 @@ def newMethod(self, songs=0):
     height = newSurface.get_height()
 
     buttonList = []
+#    buttonList.append(Button.Button(newSurface, 100, 100, 100, "white", 190, 465,
+#                                    120, 340, 20, ))
     pauseButton(buttonList, newSurface)
     resumeButton(buttonList, newSurface)
     playAllButton(buttonList, newSurface)
@@ -29,35 +32,49 @@ def newMethod(self, songs=0):
     addTestToQueueButton(buttonList, newSurface)
     playTestButton(buttonList, newSurface)
 
-    noteListWhite = ["C3", "C-3", "D3", "D-3", "E3", "F3", "F-3", "G3", "G-3", "A3", "A-3", "B3", "C4"]
-    noteListBlack = []
-
+#    noteListWhite = ["C3", "C-3", "D3", "D-3", "E3", "F3", "F-3", "G3", "G-3", "A3", "A-3", "B3", "C4"]
+#    noteListBlack = []
+    playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", "C3", 200, 500)
+    playPianoKeyButton(buttonList, newSurface, 60, 60, 60, "white", "C-3", 225, 475)
+    playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", "D3", 250, 500)
+    playPianoKeyButton(buttonList, newSurface, 60, 60, 60, "white", "D-3", 275, 475)
+    playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", "E3", 300, 500)
+    playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", "F3", 325, 500)
+    playPianoKeyButton(buttonList, newSurface, 60, 60, 60, "white", "F-3", 350, 475)
+    playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", "G3", 375, 500)
+    playPianoKeyButton(buttonList, newSurface, 60, 60, 60, "white", "G-3", 400, 475)
+    playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", "A3", 425, 500)
+    playPianoKeyButton(buttonList, newSurface, 60, 60, 60, "white", "A-3", 450, 475)
+    playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", "B3", 475, 500)
+    playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", "C4", 500, 500)
 
 
     x = 200
     y = 500
-    for note in noteListWhite:
-        playPianoKeyButton(buttonList, newSurface, 0, 0, 0, "white", note, x, y)
-        x += 25
+#    for note in noteListWhite:
+#        playPianoKeyButton(buttonList, newSurface, 0, 0, 0, "white", note, x, y)
+#        x += 25
 
-    for note in noteListBlack:
-        playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", note, x, y)
-        x += 25
+#    for note in noteListBlack:
+#        playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", note, x, y)
+#        x += 25
     quitProgramButton(buttonList, newSurface)
 
     playDemonsButton(buttonList, newSurface)
 
-    while True:
+    running = True
+    while running is True:
         for moment in pygame.event.get():
             if moment.type == pygame.QUIT:
-                pygame.quit()
+                running = False
+                print("hi")
                 sys.exit()
             if moment.type == pygame.MOUSEBUTTONDOWN:
                 i = 0
                 for button in buttonList:
                     if isHovering(button, mouse):
                         thread = threading.Thread(target=clickButton, args=(newSurface, button, buttonList, play,))
-                        clickButton(newSurface, button, buttonList, play)
+                        #clickButton(newSurface, button, buttonList, play)
                         thread.start()
                         Songbook.threads.append(thread)
                         print("clicked")
@@ -152,8 +169,8 @@ def resumeButtonClick(play):
     Calls play() in Play.py when the button is clicked
     :return:
     """
-    play.play(play.getSong())
-    #play.resume()
+    #play.play(play.getSong())
+    play.resume()
 
 
 def stopButton(buttonList, newSurface):
@@ -193,8 +210,9 @@ def playDemonsButton(buttonList, newSurface):
     buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 50, 500,
                                     100, 150, 20, "Demons by IG"))
 
-def playDemonsButtonClick(play):
-    play.play(FileUtils.fileToSong("DemonsIG.csv"))
+def playDemonsButtonClick(plays):
+
+    plays.play(FileUtils.fileToSong("DemonsIG.csv"))
 
 def drawButton(newSurface, button, x=0):
     if button.getRed() + x > 255:
@@ -210,12 +228,13 @@ def quitProgramButton(buttonList, newSurface):
 
 
 def quitProgramButtonClick():
-
-    for thread in Songbook.threads:
-        thread.join()
-    print("Thanks for using the program!")
-    pygame.event.get(pygame.QUIT)
-    exit()
+    threading.Thread = threading.main_thread()
+    pygame.event = pygame.event.get(pygame.QUIT)
+    #pygame.event = pygame.event.get(pygame.QUIT)
+    #print("Thanks for using the program!")
+    #pygame.event = pygame.event.get(pygame.QUIT)
+    #exit()
+    #print("hi")
 
 
 

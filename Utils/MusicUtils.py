@@ -21,16 +21,19 @@ def playSong(song, play):
     :return: nothing
     """
     print("\n\nPlaying\n\n")
-
-    for musicPerInst in song.getMusicPerInstList():
-        for note in musicPerInst.getNotes():
-            print(str(note))
-            if play.isPaused():
-                #print("***" + str(Songbook.threads))
-                #Songbook.threads[0].join()
-                #print("***" + str(Songbook.threads))
-                return
-            playNote(note)
+    try:
+        for musicPerInst in song.getMusicPerInstList():
+            for note in musicPerInst.getNotes():
+                print(str(note))
+                if play.isPaused():
+                    #print("***" + str(Songbook.threads))
+    #                Songbook.threads[0].join()
+                    #print("***" + str(Songbook.threads))
+                    print("The song was stopped.")
+                    return
+                playNote(note)
+    except:
+        print("No song in list")
 
     return
 

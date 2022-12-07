@@ -58,5 +58,6 @@ def fileToSong(fileName):
         song = Song(title, instPer, sig, 0)
 
         return song
+
     print("Error: Exited with statement early #fileToSong")
     return None

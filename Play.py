@@ -129,9 +129,9 @@ class Play:
         :return:
         """
         self.paused = True
-        newSong = Song.Song(self.nowPlaying.getTitle(), self.nowPlaying.getMusicPerInstList(),
-                            self.nowPlaying.getTimeSig(), self.nowPlaying.getCurrentPosition())
-        self.queue.insert(0, newSong)
+#        newSong = Song.Song(self.nowPlaying.getTitle(), self.nowPlaying.getMusicPerInstList(),
+#                            self.nowPlaying.getTimeSig(), self.nowPlaying.getCurrentPosition())
+#        self.queue.insert(0, newSong)
         self.paused = True
         #this is not complete, and feel free to change it.
 
