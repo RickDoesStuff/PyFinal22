@@ -1,3 +1,5 @@
+import sys
+
 import Songbook
 from Utils import MusicUtils
 from Utils import FileUtils
@@ -13,7 +15,10 @@ def main():
 
 
     #Button.newMethod()
-    Gui.newMethod(songs)
+    try:
+        Gui.newMethod(songs)
+    except:
+        sys.exit()
 
 def load(songs, fileNames):
     for fileName in fileNames:

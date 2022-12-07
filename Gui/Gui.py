@@ -67,7 +67,7 @@ def newMethod(self, songs=0):
         for moment in pygame.event.get():
             if moment.type == pygame.QUIT:
                 running = False
-                print("hi")
+                #print("hi")
                 sys.exit()
             if moment.type == pygame.MOUSEBUTTONDOWN:
                 i = 0
@@ -77,7 +77,7 @@ def newMethod(self, songs=0):
                         #clickButton(newSurface, button, buttonList, play)
                         thread.start()
                         Songbook.threads.append(thread)
-                        print("clicked")
+                        #print("clicked")
 
             if pygame.key.get_pressed()[pygame.K_1]:
                 playButtonClick("c3.csv", play)
