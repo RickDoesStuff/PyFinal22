@@ -21,6 +21,12 @@ def main():
         sys.exit()
 
 def load(songs, fileNames):
+    """
+    Loads all the songs from the list into the song book
+    :param songs:
+    :param fileNames:
+    :return:
+    """
     for fileName in fileNames:
         Songbook.songs.append(FileUtils.fileToSong(fileName))  # Load all the files as the song type
 

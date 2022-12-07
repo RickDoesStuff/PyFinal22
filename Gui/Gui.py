@@ -5,7 +5,7 @@ import threading
 import time
 
 import Songbook
-from Gui import Button
+from . import Button
 from Play import Play
 from Utils import FileUtils
 from Utils import MusicUtils

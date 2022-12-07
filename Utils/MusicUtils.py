@@ -8,6 +8,10 @@ import Songbook
 
 
 def init():
+    """
+    initialize pygame mixer
+    :return:
+    """
     pg.mixer.init()
     pg.init()
     pg.mixer.set_num_channels(50)  # amt of notes
