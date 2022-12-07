@@ -7,7 +7,7 @@ from Gui import Gui
 
 def main():
     songs = []
-    fileNames = ["test.csv"]
+    fileNames = ["test.csv","DemonsIG.csv","FurElise.csv"]
     load(songs, fileNames)
     MusicUtils.init()
 
