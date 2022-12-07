@@ -61,7 +61,7 @@ def newMethod(self, songs=0):
     quitProgramButton(buttonList, newSurface)
 
     playDemonsButton(buttonList, newSurface)
-
+    playFurEliseButton(buttonList, newSurface)
     running = True
     while running is True:
         for moment in pygame.event.get():
@@ -210,6 +210,14 @@ def playDemonsButton(buttonList, newSurface):
     buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 50, 500,
                                     100, 150, 20, "Demons by IG"))
 
+def playFurEliseButtonClick(plays):
+
+    plays.play(FileUtils.fileToSong("FurElise.csv"))
+
+def playFurEliseButton(buttonList, newSurface):
+    buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 400, 10,
+                                    100, 150, 20, "Fur Elise"))
+
 def playDemonsButtonClick(plays):
 
     plays.play(FileUtils.fileToSong("DemonsIG.csv"))
@@ -309,4 +317,6 @@ def clickButton(newSurface, button, buttonList, play):
         quitProgramButtonClick()
     elif button == buttonList[20]:
         playDemonsButtonClick(play)
+    elif button == buttonList[21]:
+        playFurEliseButtonClick(play)
 

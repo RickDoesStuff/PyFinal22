@@ -47,6 +47,7 @@ def playNote(note):
     # t.sleep(1)  # wait 1 second before playing the note
 
     # print("note to be played:", str(note))
+
     pg.mixer.Sound("PianoNotes/" + str(note.getName())+ ".wav").\
         play(1,int(note.getFadeout())).set_volume(float(note.getVolume()))
 

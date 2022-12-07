@@ -44,6 +44,7 @@ def fileToSong(fileName):
                     #pygame.mixer.fadeout(int(row[3]))
                     #if row[4] == True:
                     #    pygame.mixer.pause()
+
                     notes.append(note)
 
 
