@@ -80,4 +80,5 @@ class Note:
         self.pause = pause
 
     def __str__(self):
-        return "[\'" + str(self.getName()) + "\', \'" + str(self.getLength()) + "\']"
+        return "[\'" + str(self.getName()) + "\', \'" + str(self.getLength()) + ", \'" + str(self.getVolume()) + ", \'"\
+               + str(self.getFadeout()) + ", \'" + str(self.getPause()) + "\']"

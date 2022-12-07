@@ -20,7 +20,7 @@ def playSong(song, play):
     :param song: The song obj
     :return: nothing
     """
-    print("\n\nPlaying\n\n")
+    print("\nPlaying")
     try:
         for musicPerInst in song.getMusicPerInstList():
             for note in musicPerInst.getNotes():
