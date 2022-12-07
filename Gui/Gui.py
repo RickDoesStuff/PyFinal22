@@ -190,39 +190,89 @@ def stopButtonClick(play):
 
 
 def addTestToQueueButton(buttonList, newSurface):
+    """
+    Adds a button that adds the test song to the queue, though currently is deimplemented.
+    :param buttonList:
+    :param newSurface:
+    :return:
+    """
     buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 400, 10,
                                     0, 0, 0, ""))
 
 
 def addTestToQueueButtonClick(play):
+    """
+    Adds the test song to the queue, but is deimplemented.
+    :param play:
+    :return:
+    """
+
     play.addToQueue("test.csv", play)
 
 
 def playTestButton(buttonList, newSurface):
+    """
+    The button that plays the test song.
+    :param buttonList:
+    :param newSurface:
+    :return:
+    """
     buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 50, 290,
                                     100, 150, 20, "Play Test"))
 
 
 def playTestButtonClick(play):
+    """
+    Plays the test song
+    :param play:
+    :return:
+    """
     play.play(FileUtils.fileToSong("test.csv"))
 
 def playDemonsButton(buttonList, newSurface):
+    """
+    Button that plays the song 'Demons' by Imagine Dragons
+    :param buttonList:
+    :param newSurface:
+    :return:
+    """
     buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 50, 140,
                                     100, 150, 20, "Demons by IG"))
 
 def playFurEliseButtonClick(plays):
-
+    """
+    Plays Fur Elise
+    :param plays:
+    :return:
+    """
     plays.play(FileUtils.fileToSong("FurElise.csv"))
 
 def playFurEliseButton(buttonList, newSurface):
+    """
+    The button that plays Fur Elise when clicked
+    :param buttonList:
+    :param newSurface:
+    :return:
+    """
     buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 225, 140,
                                     100, 150, 20, "Fur Elise"))
 
 def playDemonsButtonClick(plays):
-
+    """
+    Plays 'Demons' by Imagine Dragons
+    :param plays:
+    :return:
+    """
     plays.play(FileUtils.fileToSong("DemonsIG.csv"))
 
 def drawButton(newSurface, button, x=0):
+    """
+    Draws a button
+    :param newSurface:
+    :param button:
+    :param x:
+    :return:
+    """
     if button.getRed() + x > 255:
         # print("Red value > 255")
         x = 255 - button.getRed()
@@ -231,11 +281,21 @@ def drawButton(newSurface, button, x=0):
 
 
 def quitProgramButton(buttonList, newSurface):
+    """
+    Button that quits the programs
+    :param buttonList:
+    :param newSurface:
+    :return:
+    """
     buttonList.append(Button.Button(newSurface, 100, 0, 0, "white", 400, 10,
                                     100, 150, 20, "Quit Program"))
 
 
 def quitProgramButtonClick():
+    """
+    Quits the program
+    :return:
+    """
     threading.Thread = threading.main_thread()
     pygame.event = pygame.event.get(pygame.QUIT)
     #pygame.event = pygame.event.get(pygame.QUIT)
@@ -250,21 +310,47 @@ def quitProgramButtonClick():
 
 
 def isHovering(button, mouse):
+    """
+    Checks if the mouse is hovering over a button
+    :param button:
+    :param mouse:
+    :return:
+    """
     return button.getXAxis() <= mouse[0] <= button.getXAxis() + button.getButtonWidth() \
            and button.getYAxis() <= mouse[1] <= button.getYAxis() + button.getButtonHeight()
 
 
 def playPianoKeyButton(buttonList, newSurface, r, g, b, color, name, xPos, yPos, j=75, k=25, l=10):
+    """
+    Creates Piano Key easily.
+    :param buttonList:
+    :param newSurface:
+    :param r:
+    :param g:
+    :param b:
+    :param color:
+    :param name:
+    :param xPos:
+    :param yPos:
+    :param j:
+    :param k:
+    :param l:
+    :return:
+    """
     buttonList.append(Button.Button(newSurface, r, g, b, color, xPos, yPos,
                                     j, k, l, name))
     return
 
 
 def playButtonClick(note, play):
-
+    """
+    Clicks the play button, but is currently unimplemented
+    :param note:
+    :param play:
+    :return:
+    """
     MusicUtils.playSong(FileUtils.fileToSong(note), play)
     pygame.mixer.fadeout(1500)
-
     pass
 
 
