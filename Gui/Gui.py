@@ -49,8 +49,8 @@ def newMethod(self, songs=0):
     playPianoKeyButton(buttonList, newSurface, 240, 255, 255, "black", "C4", 500, 500)
 
 
-    x = 200
-    y = 500
+#    x = 200
+#    y = 500
 #    for note in noteListWhite:
 #        playPianoKeyButton(buttonList, newSurface, 0, 0, 0, "white", note, x, y)
 #        x += 25
@@ -261,8 +261,10 @@ def playPianoKeyButton(buttonList, newSurface, r, g, b, color, name, xPos, yPos,
 
 
 def playButtonClick(note, play):
+
     MusicUtils.playSong(FileUtils.fileToSong(note), play)
     pygame.mixer.fadeout(1500)
+
     pass
 
 

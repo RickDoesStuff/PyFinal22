@@ -39,7 +39,7 @@ def fileToSong(fileName):
                     print("new inst and key: ", inst, key)
             else:  # it's not a header or new instrument
                 try:
-                    note = Note(row[0], round(float(row[1]), 1), row[2], row[3], row[4]) # note name, note length, note volume, note fadout time, boolean to pause
+                    note = Note(row[0], round(float(row[1]), 1), round(float(row[2])/5, 1), float(row[3]), (row[4])) # note name, note length, note volume, note fadout time, boolean to pause
                     #pygame.mixer.Sound("PianoNotes/"+row[0]+".wav").set_volume(float(row[2]))
                     #pygame.mixer.fadeout(int(row[3]))
                     #if row[4] == True:
@@ -50,7 +50,7 @@ def fileToSong(fileName):
 
                     print("New note added: ", str(note))
                 except IndexError:
-                    note = Note(row[0], round(float(row[1]), 1), 0.5,1000,False) # note name, note length
+                    note = Note(row[0], round(float(row[1]), 1), 0.2,1000,False) # note name, note length
                     notes.append(note)
                     print("New note added: ", str(note))
 
