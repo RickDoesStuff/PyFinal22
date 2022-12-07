@@ -123,10 +123,10 @@ def newMethod(self, songs=0):
 
 def playAllButton(buttonList, newSurface):
     """
-    Creates a resume button and puts it on the screen
+    Creates a playAll button and puts it on the screen
     :return:
     """
-    buttonList.append(Button.Button(newSurface, 0, 80, 170, "white", 50, 150,
+    buttonList.append(Button.Button(newSurface, 0, 80, 170, "white", 225, 10, # 50 150
                                     100, 150, 20, "PlayAll"))
 
 
@@ -144,7 +144,7 @@ def pauseButton(buttonList, newSurface):
     :return:
     """
     buttonList.append(Button.Button(newSurface, 180, 30, 50, "white", 225, 10,
-                                    100, 150, 20, "Pause"))
+                                    0, 0, 0, ""))
 
 
 def pauseButtonClick(play):
@@ -161,7 +161,7 @@ def resumeButton(buttonList, newSurface):
     :return:
     """
     buttonList.append(Button.Button(newSurface, 0, 170, 40, "white", 50, 10,
-                                    100, 150, 20, "Resume"))
+                                    0, 0, 0, ""))
 
 
 def resumeButtonClick(play):
@@ -178,7 +178,7 @@ def stopButton(buttonList, newSurface):
     Creates a stop button and puts it on the screen
     :return:
     """
-    buttonList.append(Button.Button(newSurface, 180, 30, 50, "white", 225, 150, 100, 150, 20, "Stop"))
+    buttonList.append(Button.Button(newSurface, 180, 30, 50, "white", 50, 10, 100, 150, 20, "Stop")) # 225 150
 
 
 def stopButtonClick(play):
@@ -207,7 +207,7 @@ def playTestButtonClick(play):
     play.play(FileUtils.fileToSong("test.csv"))
 
 def playDemonsButton(buttonList, newSurface):
-    buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 50, 500,
+    buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 50, 140,
                                     100, 150, 20, "Demons by IG"))
 
 def playFurEliseButtonClick(plays):
@@ -215,7 +215,7 @@ def playFurEliseButtonClick(plays):
     plays.play(FileUtils.fileToSong("FurElise.csv"))
 
 def playFurEliseButton(buttonList, newSurface):
-    buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 400, 10,
+    buttonList.append(Button.Button(newSurface, 170, 80, 170, "white", 225, 140,
                                     100, 150, 20, "Fur Elise"))
 
 def playDemonsButtonClick(plays):
@@ -231,7 +231,7 @@ def drawButton(newSurface, button, x=0):
 
 
 def quitProgramButton(buttonList, newSurface):
-    buttonList.append(Button.Button(newSurface, 100, 0, 0, "white", 225, 290,
+    buttonList.append(Button.Button(newSurface, 100, 0, 0, "white", 400, 10,
                                     100, 150, 20, "Quit Program"))
 
 
